@@ -14,7 +14,7 @@ class PortfoliosController < ApplicationController
 
     respond_to do |format|
       if @portfolio_item.save
-        format.html { redirect_to portfolios_path, notice: 'Portfolio was successfully created.' }
+        format.html { redirect_to portfolio_path(@portfolio_item.id), notice: 'Portfolio was successfully created.' }
       else
         format.html { render :new }      
       end
@@ -23,7 +23,7 @@ class PortfoliosController < ApplicationController
   end
 
   def show
-    
+    @portfolio_item = Portfolio.find(params[:id])
   end
 
   def edit
